@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>beforeRunningCommand</key>
+	<string>nop</string>
+	<key>command</key>
+	<string>#!/usr/bin/env php 
+&lt;?php
+include $_ENV['TM_BUNDLE_SUPPORT'] . '/lib/PhpBeautifier.inc';
+
+$input = file_get_contents('php://stdin');
+
+$beautify = new PhpBeautifier($input);
+echo $beautify-&gt;makePretty();
+?&gt;
+</string>
+	<key>fallbackInput</key>
+	<string>document</string>
+	<key>input</key>
+	<string>selection</string>
+	<key>keyEquivalent</key>
+	<string>^~@p</string>
+	<key>name</key>
+	<string>beautify</string>
+	<key>output</key>
+	<string>replaceSelectedText</string>
+	<key>scope</key>
+	<string>source.php.embedded.block.html</string>
+	<key>uuid</key>
+	<string>969C3C00-CC95-49FF-9A23-A3A608E8156C</string>
+</dict>
+</plist>
