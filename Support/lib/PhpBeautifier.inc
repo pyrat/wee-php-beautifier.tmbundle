@@ -331,13 +331,19 @@ class PhpBeautifier
 			$str=preg_replace("/\s*(\&\&|\|\|)\s*/", " \\1 ", $str);
 		}
 		
+		//put an \n after comments
+    $str=preg_replace('/\s*(line_comment_replacement\d+_beautify_)\s*/s', "\\1\n", $str);
+
+		//put an \n after multie line comments
+		$str=preg_replace('/\s*(multi_comment_replacement\d+_beautify_)\s*/s', "\n\\1\n", $str);
+		
 		if ( $this -> blockLine === true )
 		{
 			//put a line before class properties and constants
 			$str=preg_replace("/\s*((public\s+|private\s+|static\s+|protected\s+|const\s+).*;)\n*/i", "\n\\1\n", $str);
 
 			//put a line before methods, functions
-			$str=preg_replace("/\s*(((public|private|static|protected)\s*)*function)/i", "\n\n\\1", $str);
+      // $str=preg_replace("/\s*(((public|private|static|protected)\s*)*function)/i", "\n\n\\1", $str);
 
 			//put an \n before each block start
 			$str=preg_replace("/(?<!{\n)(if|for|while|foreach|try|switch)(?=\s*[({])/is", "\n\\1", $str);
@@ -360,11 +366,7 @@ class PhpBeautifier
 		//join else if
 		$str=preg_replace("/(else\s*if)/is", "elseif", $str);
 
-		//put an \n after comments
-		$str=preg_replace('/\s*(line_comment_replacement\d+_beautify_)\s*/s', "\\1\n", $str);
 
-		//put an \n after multie line comments
-		$str=preg_replace('/\s*(multi_comment_replacement\d+_beautify_)\s*/s', "\n\\1\n", $str);
 		
 		//put a line break after <?php
 		$str=preg_replace("/\<\?php\s*/", "<?php\n", $str);
