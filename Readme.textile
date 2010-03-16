@@ -1,0 +1,6 @@
+h1. Wee Php Beautifier
+
+!http://www.scaturchio.info/massmedia_SMC219/images/Un-natural-beauty.jpg!
+
+* Run ctrl + alt + cmd + p within a php file to allow you to make your php code pretty.
+* Requirements: PHP CLI
