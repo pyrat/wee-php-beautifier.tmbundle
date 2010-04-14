@@ -267,11 +267,7 @@ class PhpBeautifier
 		// set one space between control keyword and condition
 		$str=preg_replace("/(if|for|while|switch|foreach|catch)\s*(\([^{]+\))\s*{/i", "\\1 \\2 \n{", $str);
 
-		//add a line break before { for try 
-		$str=preg_replace("/(try)\s*{/i", "\\1 \\2 \n{", $str);
 		
-		//add a line break before { for functions as well
-		$str=preg_replace("/(function|class)\s+(.*?)\s*{\s*/i", "\\1 \\2 \n{\n", $str);
 
 		/**
 		* Comma
