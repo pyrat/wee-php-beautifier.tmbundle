@@ -7,7 +7,9 @@
 	<key>command</key>
 	<string>#!/usr/bin/env php 
 &lt;?php
-include $_ENV['TM_BUNDLE_SUPPORT'] . '/lib/PhpBeautifier.inc';
+
+$env = array_key_exists('TM_BUNDLE_SUPPORT', $_SERVER) ? $_SERVER : $_ENV;
+include $env['TM_BUNDLE_SUPPORT'] . '/lib/PhpBeautifier.inc';
 
 $input = file_get_contents('php://stdin');
 
